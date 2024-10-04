@@ -1,0 +1,28 @@
+<nav class="bg-gray-800 p-4 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="text-white font-bold text-xl">
+      <a href="#" class="hover:text-gray-300">YourLogo</a>
+    </div>
+  
+    <!-- Profile Picture with Dropdown -->
+    <div class="relative">
+      <!-- Profile Picture (clickable) -->
+      <button (click)="toggleDropdown()" class="profile-picture flex items-center focus:outline-none">
+        <img
+          src="https://via.placeholder.com/40"
+          alt="Profile Picture"
+          class="rounded-full h-10 w-10 border-2 border-gray-600"
+        />
+      </button>
+  
+      <!-- Dropdown Menu -->
+      <div
+        *ngIf="dropdownOpen"
+        class="dropdown-content absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10"
+      >
+        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profile</a>
+        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Settings</a>
+        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200" (click)="signOut()">Sign out</a>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,33 @@
+<app-candidatesuploads></app-candidatesuploads>
+
+  
+<div class="bg-gray-100 p-8">
+   <div class="overflow-x-auto">
+       <table class="min-w-full bg-white border border-gray-300">
+           <thead>
+               <tr class="w-full bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                   <th class="py-3 px-6 text-left">POSITION</th>
+                   <th class="py-3 px-6 text-left">CANDIDATE</th>
+                   <th class="py-3 px-6 text-left">VOTE</th>
+               </tr>
+           </thead>
+           <tbody class="text-gray-600 text-sm">
+               <tr class="border-b border-gray-300 hover:bg-gray-100" *ngFor="let item of results">
+                   <td class="py-3 px-6 text-left">{{item.position}}</td>
+                   <td class="py-3 px-6 text-left">{{item.candidate}}</td>
+                   <td class="py-3 px-6 text-left">{{item.count}}</td>
+               </tr>
+               
+           </tbody>
+       </table>
+       <div class="text-center p-4 font-bold text-2xl">{{msg}}</div>
+   </div>
+
+</div>
+
+
+
+
+             
+ 
+

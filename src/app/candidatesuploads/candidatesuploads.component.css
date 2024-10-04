@@ -1,0 +1,46 @@
+.admin-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 240px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .sidenav h3 {
+    color: #ff4081;
+    margin-left: 16px;
+    margin-top: 16px;
+  }
+  
+  .sidenav mat-list-item {
+    color: #fff;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dashboard-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .widget {
+    width: 300px;
+    height: 150px;
+  }
+  
+  .widget mat-card-content {
+    text-align: center;
+    font-size: 32px;
+  }
+  

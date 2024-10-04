@@ -1,0 +1,35 @@
+<app-candidatesuploads></app-candidatesuploads>
+
+
+<div class="p-4">
+  <h1 class="text-2xl font-bold">Accredited Voters</h1>
+  <p>Your can upload your accredited voters here...</p>
+
+</div>
+
+
+<div class="container border border-2 border-dotted rounded-md border-gray-600 p-6">
+  <div class="py-10 bg-gray-100 flex items-center justify-center px-4">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-4 text-center">Sign Up</h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="mb-4">
+          <label class="block text-gray-700">State Code</label>
+          <input formControlName="statecode" type="text"
+            class="mt-1 p-2 border w-full rounded focus:outline-none focus:ring focus:border-blue-300" />
+          <div *ngIf="form.get('statecode').invalid && form.get('statecode').touched" class="text-red-600 text-sm mt-1">
+            <span *ngIf="form.get('statecode').errors.required">Statecode is required</span>
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          [disabled]="form.invalid">
+          Submit
+        </button>
+      </form>
+      <div class="text-center mt-2 text-red-600">{{msg0}}</div>
+      <div class="text-center mt-2 text-green-600">{{msg1}}</div>
+    </div>
+  </div>
+
+</div>

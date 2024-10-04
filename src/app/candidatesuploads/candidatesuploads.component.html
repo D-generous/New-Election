@@ -1,0 +1,43 @@
+<nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-4">
+          <div>
+            <a class="flex items-center py-5 px-2 text-gray-700">
+              <svg class="h-6 w-6 mr-1 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-bold text-lg">Admin Portal</span>
+            </a>
+          </div>
+  
+          <div class="hidden md:flex items-center space-x-1">
+            <a href="/admin" class="py-5 px-3 text-gray-700 hover:text-gray-900">Dashboard</a>
+            <a href="/admin/uploadscandidatesinfo" class="py-5 px-3 text-gray-700 hover:text-gray-900">Manage Candidates</a>
+            <a href="/admin/accreditedvoters" class="py-5 px-3 text-gray-700 hover:text-gray-900">Manager Voters</a>
+            <a href="/admin/result" class="py-5 px-3 text-gray-700 hover:text-gray-900">Election Progress</a>
+          </div>
+        </div>
+  
+        <div class="hidden md:flex items-center space-x-1">
+          <!-- <a href="#" class="py-2 px-3 text-blue-600 hover:text-blue-700">Admin Profile</a> -->
+          <button (click)="logout()" class="py-2 px-3 bg-red-600 text-white rounded-lg hover:bg-red-700">Logout</button>
+        </div>
+  
+        <div class="md:hidden flex items-center">
+          <button (click)="toggleMobileMenu()" class="mobile-menu-button">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="mobileMenuVisible" class="mobile-menu md:hidden">
+      <a href="/admin" class="block py-2 px-4 text-sm hover:bg-gray-200">Dashboard</a>
+      <a href="/admin/uploadscandidatesinfo" class="block py-2 px-4 text-sm hover:bg-gray-200">Manage Elections</a>
+      <a href="/admin/accreditedvoters" class="block py-2 px-4 text-sm hover:bg-gray-200">Voters</a>
+      <a href="/admin/result" class="block py-2 px-4 text-sm hover:bg-gray-200">Election Progress</a>
+    </div>
+  </nav>
