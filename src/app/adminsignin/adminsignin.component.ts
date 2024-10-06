@@ -81,7 +81,10 @@ export class AdminsigninComponent {
 
       this.storeDataWithExpiry(encrypted, 60)
 
-      this.routes.navigate(['/admin']);
+      if (response.status===true) {
+        this.routes.navigate(['/admin']);
+        
+      }
        
     }, 
     (error) => { 
