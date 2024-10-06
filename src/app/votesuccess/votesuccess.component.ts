@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-votesuccess',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './votesuccess.component.css'
 })
 export class VotesuccessComponent {
+  @Output() closeModal = new EventEmitter<void>();
+
+  close() {
+    this.closeModal.emit();
+  }
 
 }
