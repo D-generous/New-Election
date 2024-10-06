@@ -1,7 +1,7 @@
 
 <div class="containe flex-1 pt-8 ps-4 pb-2 shadow-lg rounded-xl m-2">
-    <div class="text-xl font-normal">Welcome, <span class="text-2xl font-bold">{{voterName}}</span></div>
-    <p class="text-lg">Your can proceed with the election here...</p>
+    <div class="text-lg font-normal">Welcome, <span class="text-2xl font-bold">{{voterName}}</span></div>
+    <marquee class="text-lg mt-2" behavior="" direction="">Your can proceed with the election here...</marquee>
   </div>
   <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="firstFormGroup" label="Vote President">

@@ -54,7 +54,7 @@ export class SigninComponent {
   
   // Remove the data from localStorage
   removeDataFromStorage(): void {
-    localStorage.removeItem('myData');
+    localStorage.removeItem('food');
   }
 
 

@@ -319,5 +319,4 @@ export class DashboardComponent {
     event.stopPropagation();
   }
 
-
 }

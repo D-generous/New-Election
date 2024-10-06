@@ -45,7 +45,7 @@ export class EnvironmentService {
     return this.http.post<any>(`${this.baseUrl}adminsignup.php`, obj)
   }
   public adminSignIn(obj:any){
-    return this.http.post<any>(`${this.baseUrl}adminsignin.php`, obj, { withCredentials: true })
+    return this.http.post<any>(`${this.baseUrl}adminsignin.php`, obj)
   }
   public candidateUpload(formdata:any){
     return this.http.post<any>(`${this.baseUrl}candidateupload.php`, formdata)
@@ -59,8 +59,8 @@ export class EnvironmentService {
   public getStatus(){
     return this.http.get<any>(`${this.baseUrl}statusdisplay.php`)
   }
-  public getAdmin(){
-    return this.http.get<any>(`${this.baseUrl}adminuser.php`, { withCredentials: true })
+  public getAdmin(obj:any){
+    return this.http.post<any>(`${this.baseUrl}adminuser.php`, obj)
   }
   public adminDashboard(){
     return this.http.get<any>(`${this.baseUrl}admindashboard.php`)

@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { Router } from '@angular/router';
 import { EnvironmentService } from '../services/environment.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-adminsignin',
@@ -28,6 +29,35 @@ export class AdminsigninComponent {
     })
   }
 
+  public secretKey = 'your_secret_key';
+
+
+  encryptData(data: string): string {
+    return CryptoJS.AES.encrypt(data, this.secretKey).toString();
+  }
+  storeDataWithExpiry(data: string, expiryTimeInSeconds: number): void {
+    const currentTime = new Date().getTime();
+    const expiryTime = currentTime + (expiryTimeInSeconds * 1000); // Convert seconds to milliseconds
+  
+    const dataToStore = {
+      value: data,
+      expiry: expiryTime
+    };
+  
+    // Store the data and expiry time as JSON in localStorage
+    localStorage.setItem('adfood', JSON.stringify(dataToStore));
+  
+    // Schedule deletion after the specified time
+    setTimeout(() => {
+      this.removeDataFromStorage();
+    }, expiryTimeInSeconds * 1000);
+  }
+  
+  // Remove the data from localStorage
+  removeDataFromStorage(): void {
+    localStorage.removeItem('adfood');
+  }
+
   public message:any=''
   onSubmit(){
 
@@ -42,13 +72,16 @@ export class AdminsigninComponent {
     
 
     this.service.adminSignIn(obj).subscribe((response:any)=>{ 
-      this.message = response.message
+      
+      console.log( response.statecode); 
+      // this.message = response.message
+      const data = response.statecode
 
-      if (response.token) {
-        // Set the token in the cookie and navigate to dashboard
-        document.cookie = `adminjwt_token=${response.token}; path=/;`;  // Add HttpOnly flag if using backend to set
-        this.routes.navigate(['/admin']);
-      }
+      const encrypted = this.encryptData(data);
+
+      this.storeDataWithExpiry(encrypted, 60)
+
+      this.routes.navigate(['/admin']);
        
     }, 
     (error) => { 

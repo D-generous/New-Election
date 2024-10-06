@@ -33,13 +33,15 @@ export class RequestpasswordComponent {
     
 
     let obj ={
-      to:this.userForm.value['email'],
+      to: this.userForm.value['email'],
 
 
     }
-    // console.log(obj);
+    console.log(obj);
   
     this.service.userRequestPassword(obj).subscribe((data:any)=>{
+      console.log(data);
+      
       if (data.state===false) {
         this.msg0 = data.message
         this.showMessageWithTimeout(this.msg0, 3000)

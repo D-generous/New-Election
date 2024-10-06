@@ -24,6 +24,7 @@ export class AdminsignupComponent {
   ngOnInit(): void {
     this.userForm = this.formbuilder.group({
       name: ['', Validators.required],
+      lname: ['', Validators.required],
       statecode: ['', [Validators.required, Validators.maxLength(4)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, this.passwordValidator]],
@@ -46,6 +47,7 @@ export class AdminsignupComponent {
 
     let obj ={
       name:this.userForm.value['name'],
+      lname:this.userForm.value['lname'],
       statecode:this.userForm.value['statecode'],
       email:this.userForm.value['email'],
       password:this.userForm.value['password'],
