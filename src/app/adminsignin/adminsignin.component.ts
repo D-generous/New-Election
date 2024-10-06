@@ -81,9 +81,14 @@ export class AdminsigninComponent {
 
       this.storeDataWithExpiry(encrypted, 60)
 
-      if (response.status===true) {
-        this.routes.navigate(['/admin']);
+      if (response.status===false) {
+        this.message = response.message
+  
+        this.showMessageWithTimeout(this.message, 3000)
         
+      }else{
+        this.routes.navigate(['/admin']);
+
       }
        
     }, 
@@ -110,6 +115,22 @@ export class AdminsigninComponent {
     //   } 
     // ); 
     
+  }
+
+  public showMsg = false
+
+  showMessageWithTimeout(message: string, duration: number) {
+    this.showMsg = true;
+
+    setTimeout(() => {
+      this.hideMessage();
+    }, duration)
+
+  }
+
+  hideMessage() {
+    this.message = '';
+    this.showMsg = false
   }
 
 

@@ -72,17 +72,22 @@ public message:any=''
 
 
     this.service.signInUser(obj).subscribe((response:any)=>{ 
-      console.log( response.statecode); 
+      // console.log( response.statecode); 
       // this.message = response.message
       const data = response.statecode
 
       const encrypted = this.encryptData(data);
 
       this.storeDataWithExpiry(encrypted, 60)
-
-      if (response.status===true) {
-        this.routes.navigate(['/dashboard']);
+      
+      if (response.status===false) {
+        this.message = response.message
+  
+        this.showMessageWithTimeout(this.message, 3000)
         
+      }else{
+        this.routes.navigate(['/dashboard']);
+
       }
 
       // console.log( response); 
