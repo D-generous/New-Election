@@ -3,14 +3,12 @@ import { CookiesService } from '../services/cookies.service';
 import { inject } from '@angular/core';
 
 export const authguardGuard: CanActivateFn = (route, state) => {
-  const authService = inject(CookiesService); 
-  const router = inject(Router); 
+  // let routes = inject(Router)
+  // let user = JSON.parse(localStorage.getItem('food')!)
+
+  // if(!user){
+  //   routes.navigate(['/signin'])
+  // }
   
-  const admintoken = authService.getAdminToken();
-  if (admintoken && !authService.isTokenAdminExpired(admintoken)) {
-    return true
-  }else {
-    router.navigate(['/adminsignin']); 
-    return false;
-  }
+  return true;
 };

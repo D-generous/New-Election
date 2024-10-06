@@ -68,14 +68,14 @@ export class AdminlandingpageComponent {
   
     this.token = this.cookiesService.getAdminToken(); 
   
-    setInterval(() => {
-      const isTokenExpired = this.cookiesService.isTokenAdminExpired(this.token);
+    // setInterval(() => {
+    //   const isTokenExpired = this.cookiesService.isTokenAdminExpired(this.token);
   
-      if (isTokenExpired && !this.sessionExpired) {
-        this.sessionExpired = true; // Mark session as expired
-        this.handleSessionTimeout();
-      }
-    }, checkInterval);
+    //   if (isTokenExpired && !this.sessionExpired) {
+    //     this.sessionExpired = true; // Mark session as expired
+    //     this.handleSessionTimeout();
+    //   }
+    // }, checkInterval);
   }
   
   handleSessionTimeout() {

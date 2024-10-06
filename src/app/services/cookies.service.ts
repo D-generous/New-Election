@@ -18,10 +18,10 @@ export class CookiesService {
   }
 
   // Check if the token is expired using angular-jwt
-  isTokenExpired(token: string): boolean {
-    const helper = new JwtHelperService();
-    return helper.isTokenExpired(token);
-  }
+  // isTokenExpired(token: string): boolean {
+  //   const helper = new JwtHelperService();
+  //   return helper.isTokenExpired(token);
+  // }
 
   // Clear JWT and logout
   logout(): void {
@@ -36,10 +36,10 @@ export class CookiesService {
       ?.split('=')[1] || null;
   }
 
-  isTokenAdminExpired(admintoken: string): boolean {
-    const helper = new JwtHelperService();
-    return helper.isTokenExpired(admintoken);
-  }
+  // isTokenAdminExpired(admintoken: string): boolean {
+  //   const helper = new JwtHelperService();
+  //   return helper.isTokenExpired(admintoken);
+  // }
 
   logoutAdmin(): void {
     document.cookie = 'adminjwt_token=; Max-Age=0; path=/;';

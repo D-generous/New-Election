@@ -15,7 +15,7 @@ export class EnvironmentService {
     return this.http.post<any>(`${this.baseUrl}signup.php`, obj)
   }
   public signInUser(obj:any){
-    return this.http.post<any>(`${this.baseUrl}signin.php`, obj, { withCredentials: true })
+    return this.http.post<any>(`${this.baseUrl}signin.php`, obj)
   }
   public userDashboard(obj:any){
     return this.http.post<any>(`${this.baseUrl}dashboard.php`, obj, { withCredentials: true })
@@ -29,8 +29,8 @@ export class EnvironmentService {
   public getUserDashboard(){
     return this.http.get<any>(`${this.baseUrl}dashboard.php`, { withCredentials: true })
   }
-  public getDetails(){
-    return this.http.get<any>(`${this.baseUrl}user.php`, { withCredentials: true })
+  public getDetails(obj:any){
+    return this.http.post<any>(`${this.baseUrl}user.php`, obj)
   }
   public accreditedVoter(obj:any){
     return this.http.post<any>(`${this.baseUrl}accreditedvoter.php`, obj)

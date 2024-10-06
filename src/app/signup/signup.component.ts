@@ -56,7 +56,8 @@ export class SignupComponent {
 
     this.service.signUpUser(obj).subscribe((data:any)=>{
       this.msg = data
-      console.log(data);
+      this.showMessageWithTimeout(this.msg, 3000)
+      // console.log(data);
       
 
       if (data.status===true) {
@@ -80,4 +81,19 @@ export class SignupComponent {
     
   }
 
+  public showMsg = false
+
+  showMessageWithTimeout(message: string, duration: number) {
+    this.showMsg = true;
+
+    setTimeout(() => {
+      this.hideMessage();
+    }, duration)
+
+  }
+
+  hideMessage() {
+    this.msg = '';
+    this.showMsg = false
+  }
 }

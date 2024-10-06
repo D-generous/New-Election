@@ -3,17 +3,12 @@ import { CanActivateFn, Router } from '@angular/router';
 import { CookiesService } from '../services/cookies.service';
 
 export const loginguardGuard: CanActivateFn = (route, state) => {
-  const authService = inject(CookiesService);
-  const router = inject(Router);
+  let routes = inject(Router)
+  let user = JSON.parse(localStorage.getItem('food')!)
 
-  
-  
-  const token = authService.getToken();
-
-  if (token && !authService.isTokenExpired(token)) {
-    return true;
-  } else {
-    router.navigate(['/signin']); 
-    return false; 
+  if(!user){
+    routes.navigate(['/signin'])
   }
+  
+  return true;
 };
