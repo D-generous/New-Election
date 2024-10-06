@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EnvironmentService } from '../services/environment.service';
 
 @Component({
@@ -15,15 +15,20 @@ import { EnvironmentService } from '../services/environment.service';
 export class ResetpasswordComponent {
   public userForm: any; 
   isChecked:any= false
+
   
 
-  constructor(public http:HttpClient, private formbuilder: FormBuilder, public routes:Router, public service:EnvironmentService) {}
+  constructor(public http:HttpClient, private formbuilder: FormBuilder, public routes:Router, public service:EnvironmentService, private route: ActivatedRoute) {}
 
+  userId: string | null = null;
   ngOnInit(): void {
     this.userForm = this.formbuilder.group({
       password: ['', [Validators.required, this.passwordValidator]],
       confirmPassword: ['', [Validators.required]],
     });
+
+
+    
   }
 
   passwordValidator(control: FormControl): { [key: string]: boolean } | null {
@@ -40,8 +45,16 @@ export class ResetpasswordComponent {
 
     if (this.userForm.value['password'] === this.userForm.value['confirmPassword']) {
       // console.log("same to same");
+      this.route.paramMap.subscribe(params => {
+        this.userId = params.get('id'); // Retrieve the value of 'id'
+        // console.log('User ID:', this.userId);
+      });
+
+      // console.log(this.userId);
+      
       
           let obj ={
+            tok: this.userId,
             password:this.userForm.value['password'],
       
       

@@ -35,10 +35,10 @@ export const routes: Routes = [
     {path:"adminsignin", component:AdminsigninComponent},
     {path:"logout", component:LogoutComponent},
     {path:"requestpassword", component:RequestpasswordComponent},
-    {path:"passwordreset", component:ResetpasswordComponent},
+    // {path:"passwordreset", component:ResetpasswordComponent},
     {path:"adminrequestpassword", component:AdminrequestpasswordComponent},
     {path:"adminpasswordreset", component:AdminresetpasswordComponent},
-    
+    { path: 'passwordreset/:id', component:  ResetpasswordComponent},
     {
         path:"admin", children:[
             {path:'', component:AdminlandingpageComponent},
