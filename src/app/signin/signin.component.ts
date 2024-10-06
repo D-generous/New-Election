@@ -80,7 +80,11 @@ public message:any=''
 
       this.storeDataWithExpiry(encrypted, 60)
 
-      this.routes.navigate(['/dashboard']);
+      if (response.status===true) {
+        this.routes.navigate(['/dashboard']);
+        
+      }
+
       // console.log( response); 
       // this.message = response.message
 
