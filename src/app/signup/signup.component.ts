@@ -63,6 +63,7 @@ export class SignupComponent {
       
 
       if (data.status===true) {
+        alert("Successfull")
         this.routes.navigate(['/signin'])
         
       }

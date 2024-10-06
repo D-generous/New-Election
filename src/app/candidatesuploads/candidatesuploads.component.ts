@@ -9,6 +9,7 @@ import { NavComponent } from '../nav/nav.component';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CookiesService } from '../services/cookies.service';
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-candidatesuploads',
   standalone: true,
@@ -25,8 +26,46 @@ export class CandidatesuploadsComponent {
     this.mobileMenuVisible = !this.mobileMenuVisible;
   }
 
+
+  public secretKey = 'your_secret_key';
+  decryptData(encryptedData: string): string {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, this.secretKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
+  }
+  
+
+  getDataWithExpiry(): string | null {
+    const storedData = localStorage.getItem('adfood');
+
+    if (!storedData) {
+      return null; // No data found
+    }
+
+    const parsedData = JSON.parse(storedData);
+    const currentTime = new Date().getTime();
+
+    // Check if the stored data has expired
+    if (currentTime > parsedData.expiry) {
+      alert("Session timeout")
+      this.routes.navigate(['/adminsignin'])
+      this.logout(); // If expired, remove it
+      return null;
+    }
+
+    // Decrypt the value using the secret key
+    const decryptedValue = this.decryptData(parsedData.value);
+    return decryptedValue; // Return the decrypted value
+  }
+
+
+  // Remove the data from localStorage
+  // removeDataFromStorage(): void {
+  //   localStorage.removeItem('food');
+  // }
+
  logout(){
-  this.logoutservice.logoutAdmin()
+  alert("Log out successfull")
+  localStorage.removeItem('adfood');
  }
 
 

@@ -238,7 +238,7 @@ export class DashboardComponent {
 
 
 
-  formvalid: any = this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid && this.fouthFormGroup.valid && this.fiveFormGroup.valid && this.sixFormGroup.valid && this.sevenFormGroup.valid && this.eightFormGroup.valid && this.nineFormGroup.valid && this.tenFormGroup.valid
+
   onSubmit() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid && this.fouthFormGroup.valid && this.fiveFormGroup.valid && this.sixFormGroup.valid && this.sevenFormGroup.valid && this.eightFormGroup.valid && this.nineFormGroup.valid && this.tenFormGroup.valid) {
       let obj = {
@@ -265,6 +265,7 @@ export class DashboardComponent {
         }
         else {
           this.voterMsg = data.message
+          this.showMessageWithTimeout(this.voterMsg, 3000)
         }
       })
 
@@ -281,6 +282,8 @@ export class DashboardComponent {
 
       // })
     } else {
+      this.voterMsg = "All steps must be selected"
+      this.showMessageWithTimeout(this.voterMsg, 3000)
       console.log('Form is not valid');
     }
 
@@ -305,6 +308,22 @@ export class DashboardComponent {
   // }
 
 
+  public showMsg = false
+
+  showMessageWithTimeout(message: string, duration: number) {
+    this.showMsg = true;
+
+    setTimeout(() => {
+      this.hideMessage();
+    }, duration)
+
+  }
+
+  hideMessage() {
+    this.voterMsg= '';
+    // this.msg1 = '';
+    this.showMsg = false
+  }
   
   closeModal() {
 
