@@ -36,7 +36,7 @@ export class EnvironmentService {
     return this.http.post<any>(`${this.baseUrl}accreditedvoter.php`, obj)
   }
   public adminRequestPassword(obj:any){
-    return this.http.post<any>(`${this.baseUrl}adminsendemail.php`, obj)
+    return this.http.post<any>(`${this.baseUrl}test2.php`, obj)
   }
   public adminResetPassword(obj:any){
     return this.http.post<any>(`${this.baseUrl}adminresetpassword.php`, obj)

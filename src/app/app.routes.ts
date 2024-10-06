@@ -37,7 +37,7 @@ export const routes: Routes = [
     {path:"requestpassword", component:RequestpasswordComponent},
     // {path:"passwordreset", component:ResetpasswordComponent},
     {path:"adminrequestpassword", component:AdminrequestpasswordComponent},
-    {path:"adminpasswordreset", component:AdminresetpasswordComponent},
+    {path:"adminpasswordreset/:id", component:AdminresetpasswordComponent},
     { path: 'passwordreset/:id', component:  ResetpasswordComponent},
     {
         path:"admin", children:[

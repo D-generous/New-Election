@@ -59,7 +59,7 @@ export class ResetpasswordComponent {
       
       
           }
-          console.log(obj);
+          // console.log(obj);
         
           this.service.userResetPassword(obj).subscribe((data:any)=>{
             console.log(data);

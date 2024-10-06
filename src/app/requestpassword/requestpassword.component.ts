@@ -37,10 +37,10 @@ export class RequestpasswordComponent {
 
 
     }
-    console.log(obj);
+    // console.log(obj);
   
     this.service.userRequestPassword(obj).subscribe((data:any)=>{
-      console.log(data);
+      // console.log(data);
       
       if (data.state===false) {
         this.msg0 = data.message
