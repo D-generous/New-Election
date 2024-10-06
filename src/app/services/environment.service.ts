@@ -21,7 +21,7 @@ export class EnvironmentService {
     return this.http.post<any>(`${this.baseUrl}dashboard.php`, obj, { withCredentials: true })
   }
   public userRequestPassword(obj:any){
-    return this.http.post<any>(`${this.baseUrl}sendemail.php`, obj)
+    return this.http.post<any>(`${this.baseUrl}mail.php`, obj)
   }
   public userResetPassword(obj:any){
     return this.http.post<any>(`${this.baseUrl}resetpassword.php`, obj)
