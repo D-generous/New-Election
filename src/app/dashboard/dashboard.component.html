@@ -7,6 +7,7 @@
     <mat-step [stepControl]="firstFormGroup" label="Vote President">
       <div class="container border border-dotted rounded-md border-gray-600 p-6">
         <div class="text-2xl font-bold shadow-lg p-6">President Ballot Box</div>
+        
         <div class="py-12 bg-gray-100 flex items-center justify-center px-4">
           <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
   
@@ -16,7 +17,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
   
@@ -40,7 +41,8 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
+                  
                 }
               </mat-radio-group>
               <div>
@@ -64,7 +66,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>
@@ -88,7 +90,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>
@@ -112,7 +114,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>
@@ -136,7 +138,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>
@@ -160,7 +162,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>
@@ -184,7 +186,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>
@@ -208,7 +210,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>
@@ -232,7 +234,7 @@
                 class="example-radio-group grid grid-cols gap-4" formControlName="gender">
                 @for (candidate of candidates; track candidate) {
                 <mat-radio-button class="example-radio-button"
-                  [value]="candidate.candidate">{{candidate.candidate}}</mat-radio-button>
+                  [value]="candidate.candidate">{{candidate.candidate}} <span>({{candidate.statecode}})</span></mat-radio-button>
                 }
               </mat-radio-group>
               <div>

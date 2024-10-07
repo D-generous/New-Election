@@ -114,6 +114,8 @@ export class DashboardComponent {
   getCandidates() {
 
     this.service.getUserDashboard().subscribe((response:any)=>{
+      console.log(response);
+      
       this.candidates = response;
 
     },
