@@ -63,7 +63,7 @@ export class SignupComponent {
       
 
       if (data.status===true) {
-        alert("Successfull")
+        alert("Registration Successfull")
         this.routes.navigate(['/signin'])
         
       }
