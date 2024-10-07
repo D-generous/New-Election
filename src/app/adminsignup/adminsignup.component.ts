@@ -58,6 +58,7 @@ export class AdminsignupComponent {
       this.msg = data
 
       if (data.status===true) {
+        alert("Registration Successfull")
         this.routes.navigate(['/adminsignin'])
         
       }

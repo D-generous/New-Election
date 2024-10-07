@@ -66,6 +66,7 @@ export class CandidatesuploadsComponent {
  logout(){
   alert("Log out successfull")
   localStorage.removeItem('adfood');
+  this.routes.navigate(['/adminsignin'])
  }
 
 

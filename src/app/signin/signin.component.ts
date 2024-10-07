@@ -78,7 +78,7 @@ public message:any=''
 
       const encrypted = this.encryptData(data);
 
-      this.storeDataWithExpiry(encrypted, 60)
+      this.storeDataWithExpiry(encrypted, 600)
       
       if (response.status===false) {
         this.message = response.message
