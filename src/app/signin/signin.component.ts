@@ -66,20 +66,22 @@ export class SigninComponent {
       pass: this.pass
     }
 
+    this.signinForm.reset()
+
 
     this.service.signInUser(obj).subscribe((response: any) => {
       const data = response.statecode
 
       const encrypted = this.encryptData(data);
 
-      this.storeDataWithExpiry(encrypted, 600)
-
+      
       if (response.status === false) {
         this.message = response.message
-
+        
         this.showMessageWithTimeout(this.message, 3000)
-
+        
       } else {
+        this.storeDataWithExpiry(encrypted, 600)
         this.routes.navigate(['/dashboard']);
 
       }

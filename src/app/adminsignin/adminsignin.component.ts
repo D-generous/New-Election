@@ -74,14 +74,14 @@ export class AdminsigninComponent {
 
       const encrypted = this.encryptData(data);
 
-      this.storeDataWithExpiry(encrypted, 600)
-
+      
       if (response.status===false) {
         this.message = response.message
-  
+        
         this.showMessageWithTimeout(this.message, 3000)
         
       }else{
+        this.storeDataWithExpiry(encrypted, 600)
         this.routes.navigate(['/admin']);
 
       }
