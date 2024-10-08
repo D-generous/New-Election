@@ -17,10 +17,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "ES2015",
-    "module": "ESNext",
+    "target": "ES2022",
+    "module": "ES2022",
     "lib": [
-      "ES2015",
+      "ES2022",
       "dom"
     ]
   },
