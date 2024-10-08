@@ -13,7 +13,6 @@ import { loginguardGuard } from './guards/loginguard.guard';
 import { AdminsignupComponent } from './adminsignup/adminsignup.component';
 import { AdminsigninComponent } from './adminsignin/adminsignin.component';
 import { authguardGuard } from './guards/authguard.guard';
-import { LogoutComponent } from './logout/logout.component';
 import { RequestpasswordComponent } from './requestpassword/requestpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { AdminrequestpasswordComponent } from './adminrequestpassword/adminrequestpassword.component';
@@ -32,7 +31,6 @@ export const routes: Routes = [
     },
     {path:"adminsignup", component:AdminsignupComponent},
     {path:"adminsignin", component:AdminsigninComponent},
-    {path:"logout", component:LogoutComponent},
     {path:"requestpassword", component:RequestpasswordComponent},
     {path:"adminrequestpassword", component:AdminrequestpasswordComponent},
     {path:"adminpasswordreset/:id", component:AdminresetpasswordComponent},

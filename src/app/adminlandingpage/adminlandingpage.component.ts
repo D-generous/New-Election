@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { CandidatesuploadsComponent } from '../candidatesuploads/candidatesuploads.component';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CookiesService } from '../services/cookies.service';
 import { EnvironmentService } from '../services/environment.service';
 import * as CryptoJS from 'crypto-js';
 
@@ -21,7 +20,7 @@ export class AdminlandingpageComponent {
     this.sideNavOpen = !this.sideNavOpen;
   }
 
-  constructor(private router: Router, public http:HttpClient, public cookiesService:CookiesService, public routes:Router, public service:EnvironmentService) {}
+  constructor(private router: Router, public http:HttpClient, public routes:Router, public service:EnvironmentService) {}
 
   mobileMenuVisible: boolean = false;
 

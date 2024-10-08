@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CookiesService } from '../services/cookies.service';
 import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-candidatesuploads',
@@ -17,7 +16,7 @@ import * as CryptoJS from 'crypto-js';
   styleUrl: './candidatesuploads.component.css'
 })
 export class CandidatesuploadsComponent {
-  constructor(private router: Router, public http: HttpClient, public routes: Router, public logoutservice: CookiesService) { }
+  constructor(private router: Router, public http: HttpClient, public routes: Router) { }
 
   mobileMenuVisible: boolean = false;
 

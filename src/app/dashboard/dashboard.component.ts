@@ -12,7 +12,6 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
 import { Router } from '@angular/router';
-import { CookiesService } from '../services/cookies.service';
 import { VotesuccessComponent } from "../votesuccess/votesuccess.component";
 import { EnvironmentService } from '../services/environment.service';
 import * as CryptoJS from 'crypto-js';
@@ -63,7 +62,7 @@ export class DashboardComponent {
   stepperOrientation: Observable<StepperOrientation>;
 
 
-  constructor(public formbuilder: FormBuilder, public http: HttpClient, public routes: Router, public cookiesService: CookiesService, public service: EnvironmentService) {
+  constructor(public formbuilder: FormBuilder, public http: HttpClient, public routes: Router, public service: EnvironmentService) {
 
     this.stepperOrientation = this.breakpointObserver
       .observe('(min-width: 800px)')
