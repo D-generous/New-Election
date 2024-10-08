@@ -15,11 +15,11 @@ import { EnvironmentService } from '../services/environment.service';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  public userForm: any; 
-  isChecked:any= false
-  
+  public userForm: any;
+  isChecked: any = false
 
-  constructor(public http:HttpClient, private formbuilder: FormBuilder, public routes:Router, public service: EnvironmentService) {}
+
+  constructor(public http: HttpClient, private formbuilder: FormBuilder, public routes: Router, public service: EnvironmentService) { }
 
   ngOnInit(): void {
     this.userForm = this.formbuilder.group({
@@ -28,7 +28,7 @@ export class SignupComponent {
       statecode: ['', [Validators.required, Validators.maxLength(4)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, this.passwordValidator]],
-      agree: [false, Validators.requiredTrue] 
+      agree: [false, Validators.requiredTrue]
     });
   }
   passwordValidator(control: FormControl): { [key: string]: boolean } | null {
@@ -41,47 +41,34 @@ export class SignupComponent {
     return this.userForm.get('statecode');
   }
 
-  public msg:any=''
+  public msg: any = ''
 
   onSubmit(): void {
-    
 
-    let obj ={
-      name:this.userForm.value['name'],
-      lname:this.userForm.value['lname'],
-      statecode:this.userForm.value['statecode'],
-      email:this.userForm.value['email'],
-      password:this.userForm.value['password'],
+
+    let obj = {
+      name: this.userForm.value['name'],
+      lname: this.userForm.value['lname'],
+      statecode: this.userForm.value['statecode'],
+      email: this.userForm.value['email'],
+      password: this.userForm.value['password'],
 
     }
 
 
-    this.service.signUpUser(obj).subscribe((data:any)=>{
+    this.service.signUpUser(obj).subscribe((data: any) => {
       this.msg = data
       this.showMessageWithTimeout(this.msg, 3000)
-      // console.log(data);
-      
 
-      if (data.status===true) {
+
+      if (data.status === true) {
         alert("Registration Successfull")
         this.routes.navigate(['/signin'])
-        
+
       }
 
     })
-    // this.http.post('https://dgen.com.ng/Election/signup.php', obj).subscribe((data:any)=>{
-    //   this.msg = data
-    //   console.log(data);
-      
 
-    //   if (data.status===true) {
-    //     this.routes.navigate(['/signin'])
-        
-    //   }
-
-      
-    // })
-    
   }
 
   public showMsg = false

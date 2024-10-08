@@ -28,14 +28,12 @@ export const routes: Routes = [
     {
         path:"dashboard", children:[
             {path:"", component:DashboardComponent},
-            // {path:"test", component:TestComponent},
         ],canActivate:[loginguardGuard]
     },
     {path:"adminsignup", component:AdminsignupComponent},
     {path:"adminsignin", component:AdminsigninComponent},
     {path:"logout", component:LogoutComponent},
     {path:"requestpassword", component:RequestpasswordComponent},
-    // {path:"passwordreset", component:ResetpasswordComponent},
     {path:"adminrequestpassword", component:AdminrequestpasswordComponent},
     {path:"adminpasswordreset/:id", component:AdminresetpasswordComponent},
     { path: 'passwordreset/:id', component:  ResetpasswordComponent},

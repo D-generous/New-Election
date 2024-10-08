@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavComponent } from '../nav/nav.component';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CandidatesuploadsComponent } from '../candidatesuploads/candidatesuploads.component';
@@ -9,7 +8,7 @@ import { EnvironmentService } from '../services/environment.service';
 @Component({
   selector: 'app-candidatesinfo',
   standalone: true,
-  imports: [NavComponent, CommonModule, ReactiveFormsModule, CandidatesuploadsComponent],
+  imports: [ CommonModule, ReactiveFormsModule, CandidatesuploadsComponent],
   templateUrl: './candidatesinfo.component.html',
   styleUrl: './candidatesinfo.component.css'
 })
@@ -64,23 +63,6 @@ export class CandidatesinfoComponent {
         }
         
       })
-      
-
-      // this.http.post('http://localhost/Election/candidateupload.php', formdata).subscribe((data:any)=>{
-      //   console.log(data);
-        
-      //   if (data.status === false) {
-      //     this.msg0 = data.message
-      //   this.showMessageWithTimeout(this.msg0, 3000)
-        
-      // }
-      // else{
-        
-      //   this.msg1 = data.message
-      //   this.showMessageWithTimeout(this.msg1, 3000)
-      //   }
-        
-      // })
 
       
     } else {

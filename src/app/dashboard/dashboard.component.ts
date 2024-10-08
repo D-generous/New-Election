@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
 import { Router } from '@angular/router';
 import { CookiesService } from '../services/cookies.service';
@@ -63,7 +63,7 @@ export class DashboardComponent {
   stepperOrientation: Observable<StepperOrientation>;
 
 
-  constructor(public formbuilder: FormBuilder, public http: HttpClient, public routes: Router, public cookiesService: CookiesService, public service:EnvironmentService) {
+  constructor(public formbuilder: FormBuilder, public http: HttpClient, public routes: Router, public cookiesService: CookiesService, public service: EnvironmentService) {
 
     this.stepperOrientation = this.breakpointObserver
       .observe('(min-width: 800px)')
@@ -88,54 +88,22 @@ export class DashboardComponent {
 
   public sessionExpired = false;
 
-  startSessionTimeoutChecker() {
-    const checkInterval = 10000;
-
-    this.token = this.cookiesService.getToken();
-
-    // setInterval(() => {
-    //   const isTokenExpired = this.cookiesService.isTokenExpired(this.token);
-
-    //   if (isTokenExpired && !this.sessionExpired) {
-    //     this.sessionExpired = true;
-    //     this.handleSessionTimeout();
-    //   }
-    // }, checkInterval);
-  }
-
-  handleSessionTimeout() {
-    alert('Session Timeout. Please log in again.');
-    this.routes.navigate(['/signin']);
-  }
 
 
   userId: any = ''
 
   getCandidates() {
 
-    this.service.getUserDashboard().subscribe((response:any)=>{
-      console.log(response);
-      
+    this.service.getUserDashboard().subscribe((response: any) => {
       this.candidates = response;
 
     },
-    (error) => {
-      this.displayError(error)
+      (error) => {
+        this.displayError(error)
 
-    }
-  );
+      }
+    );
 
-    // this.http.get('http://localhost/Election/dashboard.php', { withCredentials: true })
-    //   .subscribe(
-    //     (response: any) => {
-    //       this.candidates = response;
-
-    //     },
-    //     (error) => {
-    //       this.displayError(error)
-
-    //     }
-    //   );
 
   }
   public secretKey = 'your_secret_key';
@@ -143,90 +111,64 @@ export class DashboardComponent {
     const bytes = CryptoJS.AES.decrypt(encryptedData, this.secretKey);
     return bytes.toString(CryptoJS.enc.Utf8);
   }
-  // handleSessionTimeout() {
-  //   alert('Session Timeout. Please log in again.');
-  //   this.routes.navigate(['/signin']);
-  // }
 
   getDataWithExpiry(): string | null {
     const storedData = localStorage.getItem('food');
 
     if (!storedData) {
-      return null; // No data found
+      return null;
     }
 
     const parsedData = JSON.parse(storedData);
     const currentTime = new Date().getTime();
 
-    // Check if the stored data has expired
     if (currentTime > parsedData.expiry) {
       alert("Session timeout")
       this.routes.navigate(['/signin'])
-      this.removeDataFromStorage(); // If expired, remove it
+      this.removeDataFromStorage();
       return null;
     }
 
-    // Decrypt the value using the secret key
     const decryptedValue = this.decryptData(parsedData.value);
-    return decryptedValue; // Return the decrypted value
+    return decryptedValue;
   }
 
 
-  // Remove the data from localStorage
   removeDataFromStorage(): void {
     localStorage.removeItem('food');
   }
 
   getData() {
-    
+
     const decryptedData = this.getDataWithExpiry();
-    if (decryptedData) {
-      console.log('Decrypted Data:', decryptedData);
-    } else {
-      console.log('No valid data found or data has expired.');
-    }
 
-    
-
-    let obj ={
+    let obj = {
       mynewfood: decryptedData,
 
 
     }
-    // const 
 
-    
+    this.service.getDetails(obj).subscribe((data: any) => {
 
-    
-      this.service.getDetails(obj).subscribe((data:any)=>{
-        console.log(data);
-        
-        this.voterName = data.fullname
-        this.voterCode = data.statecode
-  
-      })
+      this.voterName = data.fullname
+      this.voterCode = data.statecode
 
-    console.log(obj);
-    
-  
-    // return parsedData.value;
-    
+    })
+
   }
 
-  public checkInterval:any
+  public checkInterval: any
   ngOnInit(): void {
 
-    this.startSessionTimeoutChecker()
     this.getCandidates()
-    // this.getUserDetails()
 
     this.getData()
     this.getDataWithExpiry()
-    
+
 
     this.checkInterval = setInterval(() => {
       this.getDataWithExpiry();
-    }, 10000); 
+    }, 10000);
 
   }
 
@@ -257,9 +199,8 @@ export class DashboardComponent {
         'welfareofficer': this.tenFormGroup.value['gender'],
       }
 
-      // console.log(obj);
 
-      this.service.userDashboard(obj).subscribe((data:any)=>{
+      this.service.userDashboard(obj).subscribe((data: any) => {
 
         if (data.status === true) {
           this.isModalOpen = true
@@ -271,44 +212,15 @@ export class DashboardComponent {
         }
       })
 
-
-      
-      // this.http.post('https://dgen.com.ng/Election/dashboard.php', obj, { withCredentials: true }).subscribe((data: any) => {
-      //   if (data.status === true) {
-      //     this.isModalOpen = true
-
-      //   }
-      //   else {
-      //     this.voterMsg = data.message
-      //   }
-
-      // })
     } else {
       this.voterMsg = "All steps must be selected"
       this.showMessageWithTimeout(this.voterMsg, 3000)
-      console.log('Form is not valid');
     }
 
   }
 
   public voterName: any = ''
   public voterCode: any = ''
-
-  // getUserDetails() {
-  //   this.service.getDetails().subscribe((data:any)=>{
-  //     this.voterName = data.fullname
-  //     this.voterCode = data.statecode
-
-  //   })
-  //   // this.http.get('http://localhost/Election/user.php', { withCredentials: true }).subscribe((data: any) => {
-
-  //   //   this.voterName = data.fullname
-  //   //   this.voterCode = data.statecode
-
-  //   // })
-
-  // }
-
 
   public showMsg = false
 
@@ -322,11 +234,11 @@ export class DashboardComponent {
   }
 
   hideMessage() {
-    this.voterMsg= '';
+    this.voterMsg = '';
     // this.msg1 = '';
     this.showMsg = false
   }
-  
+
   closeModal() {
 
     this.routes.navigate(['/'])

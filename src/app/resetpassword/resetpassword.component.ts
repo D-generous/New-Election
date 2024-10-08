@@ -44,42 +44,19 @@ export class ResetpasswordComponent {
   onSubmit(): void {
 
     if (this.userForm.value['password'] === this.userForm.value['confirmPassword']) {
-      // console.log("same to same");
       this.route.paramMap.subscribe(params => {
-        this.userId = params.get('id'); // Retrieve the value of 'id'
-        // console.log('User ID:', this.userId);
+        this.userId = params.get('id');
       });
-
-      // console.log(this.userId);
       
       
           let obj ={
             tok: this.userId,
-            password:this.userForm.value['password'],
-      
-      
+            password:this.userForm.value['password'],   
           }
-          // console.log(obj);
         
           this.service.userResetPassword(obj).subscribe((data:any)=>{
             console.log(data);
           })
-      
-          // this.http.post('https://dgen.com.ng/Election/resetpassword.php', obj).subscribe((data:any)=>{
-          //   // if (data.state===false) {
-          //   //   this.msg0 = data.message
-          //   //   this.showMessageWithTimeout(this.msg0, 3000)
-              
-          //   // }else{
-          //   //   this.msg1 = data.message
-          //   //   this.showMessageWithTimeout(this.msg1, 5000)
-      
-      
-          //   // }
-          //   console.log(data);
-      
-            
-          // })
       
     }
     else{

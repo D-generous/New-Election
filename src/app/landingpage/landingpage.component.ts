@@ -29,9 +29,6 @@ export class LandingpageComponent {
     this.service.landingPage().subscribe((data:any)=>{
       this.candidates = data  
     })
-    // this.http.get('https://dgen.com.ng/Election/landingpage.php').subscribe((data:any)=>{ 
-    //   this.candidates = data  
-    // })
   }
 
 }

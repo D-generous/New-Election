@@ -15,11 +15,11 @@ import { EnvironmentService } from '../services/environment.service';
 })
 export class AdminsignupComponent {
 
-  public userForm: any; 
-  isChecked:any= false
-  
+  public userForm: any;
+  isChecked: any = false
 
-  constructor(public http:HttpClient, private formbuilder: FormBuilder, public routes:Router, public service:EnvironmentService) {}
+
+  constructor(public http: HttpClient, private formbuilder: FormBuilder, public routes: Router, public service: EnvironmentService) { }
 
   ngOnInit(): void {
     this.userForm = this.formbuilder.group({
@@ -28,7 +28,7 @@ export class AdminsignupComponent {
       statecode: ['', [Validators.required, Validators.maxLength(4)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, this.passwordValidator]],
-      agree: [false, Validators.requiredTrue] 
+      agree: [false, Validators.requiredTrue]
     });
   }
   passwordValidator(control: FormControl): { [key: string]: boolean } | null {
@@ -41,39 +41,29 @@ export class AdminsignupComponent {
     return this.userForm.get('statecode');
   }
 
-  public msg:any =''
+  public msg: any = ''
   onSubmit(): void {
-    
 
-    let obj ={
-      name:this.userForm.value['name'],
-      lname:this.userForm.value['lname'],
-      statecode:this.userForm.value['statecode'],
-      email:this.userForm.value['email'],
-      password:this.userForm.value['password'],
+
+    let obj = {
+      name: this.userForm.value['name'],
+      lname: this.userForm.value['lname'],
+      statecode: this.userForm.value['statecode'],
+      email: this.userForm.value['email'],
+      password: this.userForm.value['password'],
 
     }
 
-    this.service.adminSignUp(obj).subscribe((data:any)=>{
+    this.service.adminSignUp(obj).subscribe((data: any) => {
       this.msg = data
 
-      if (data.status===true) {
+      if (data.status === true) {
         alert("Registration Successfull")
         this.routes.navigate(['/adminsignin'])
-        
+
       }
     })
-    
-    // this.http.post('https://dgen.com.ng/Election//adminsignup.php', obj).subscribe((data:any)=>{
 
-    //   this.msg = data
-
-    //   if (data.status===true) {
-    //     this.routes.navigate(['/adminsignin'])
-        
-    //   }
-    // })
-  
   }
 
 }

@@ -13,64 +13,43 @@ import { EnvironmentService } from '../services/environment.service';
   styleUrl: './requestpassword.component.css'
 })
 export class RequestpasswordComponent {
-  public userForm: any; 
-  isChecked:any= false
-  
+  public userForm: any;
+  isChecked: any = false
 
-  constructor(public http:HttpClient, private formbuilder: FormBuilder, public routes:Router, public service:EnvironmentService) {}
+
+  constructor(public http: HttpClient, private formbuilder: FormBuilder, public routes: Router, public service: EnvironmentService) { }
 
   ngOnInit(): void {
     this.userForm = this.formbuilder.group({
-      email: ['', [Validators.required, Validators.email]], 
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
 
-  public msg0:any=''
-  public msg1:any=''
+  public msg0: any = ''
+  public msg1: any = ''
 
   onSubmit(): void {
-    
 
-    let obj ={
+
+    let obj = {
       to: this.userForm.value['email'],
-
-
     }
-    // console.log(obj);
-  
-    this.service.userRequestPassword(obj).subscribe((data:any)=>{
-      // console.log(data);
-      
-      if (data.state===false) {
+
+    this.service.userRequestPassword(obj).subscribe((data: any) => {
+
+      if (data.state === false) {
         this.msg0 = data.message
         this.showMessageWithTimeout(this.msg0, 3000)
-        
-      }else{
+
+      } else {
         this.msg1 = data.message
         this.showMessageWithTimeout(this.msg1, 5000)
 
 
       }
     })
-    
 
-    // this.http.post('https://dgen.com.ng/Election/sendemail.php', obj).subscribe((data:any)=>{
-    //   if (data.state===false) {
-    //     this.msg0 = data.message
-    //     this.showMessageWithTimeout(this.msg0, 3000)
-        
-    //   }else{
-    //     this.msg1 = data.message
-    //     this.showMessageWithTimeout(this.msg1, 5000)
-
-
-    //   }
-    //   // console.log(data);
-
-      
-    // })
-    
   }
 
   public showMsg = false

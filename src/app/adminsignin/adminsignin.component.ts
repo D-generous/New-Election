@@ -37,14 +37,13 @@ export class AdminsigninComponent {
   }
   storeDataWithExpiry(data: string, expiryTimeInSeconds: number): void {
     const currentTime = new Date().getTime();
-    const expiryTime = currentTime + (expiryTimeInSeconds * 1000); // Convert seconds to milliseconds
+    const expiryTime = currentTime + (expiryTimeInSeconds * 1000);
   
     const dataToStore = {
       value: data,
       expiry: expiryTime
     };
   
-    // Store the data and expiry time as JSON in localStorage
     localStorage.setItem('adfood', JSON.stringify(dataToStore));
   
     // Schedule deletion after the specified time
@@ -53,7 +52,6 @@ export class AdminsigninComponent {
     }, expiryTimeInSeconds * 1000);
   }
   
-  // Remove the data from localStorage
   removeDataFromStorage(): void {
     localStorage.removeItem('adfood');
   }
@@ -61,7 +59,6 @@ export class AdminsigninComponent {
   public message:any=''
   onSubmit(){
 
-    // this.setCookieFromBackend()
     this.email= this.signinForm.value['email']
     this.pass= this.signinForm.value['pass']
 
@@ -73,8 +70,6 @@ export class AdminsigninComponent {
 
     this.service.adminSignIn(obj).subscribe((response:any)=>{ 
       
-      console.log( response.statecode); 
-      // this.message = response.message
       const data = response.statecode
 
       const encrypted = this.encryptData(data);
@@ -96,24 +91,6 @@ export class AdminsigninComponent {
       this.message = error
     } 
   ); 
-
-
-
-    // this.http.post('http://localhost/Election/adminsignin.php',obj,{ withCredentials: true }).subscribe( 
-    //   (response:any) => { 
-    //     this.message = response.message
-
-    //     if (response.token) {
-    //       // Set the token in the cookie and navigate to dashboard
-    //       document.cookie = `adminjwt_token=${response.token}; path=/;`;  // Add HttpOnly flag if using backend to set
-    //       this.routes.navigate(['/admin']);
-    //     }
-         
-    //   }, 
-    //   (error) => { 
-    //     this.message = error
-    //   } 
-    // ); 
     
   }
 
